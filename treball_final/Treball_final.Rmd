@@ -180,3 +180,7 @@ cat("\\begin{table}[ht]
 ```
 La taula mostra un extracte dels números premiats corresponents al sorteig del 2024. Cada fila representa un número premiat, identificat per la seva xifra, i inclou informació addicional com la lletra associada. A més, cada registre té l'import del premi, la seva categoria, la moneda (en aquest cas, sempre seràn Euros) i l'any del sorteig.  En el període de 10 anys que analitzarem, hi han hagut 53.050 números premiats. 
 \newpage
+
+Materials i Mètodes
+=======================================================================================================================
+
