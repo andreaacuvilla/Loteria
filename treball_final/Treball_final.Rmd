@@ -131,26 +131,44 @@ exemple %>%
 La taula mostra un extracte dels números premiats corresponents al sorteig del 2024. Cada fila representa un número premiat, identificat per la seva xifra, i inclou informació addicional com la lletra associada. A més, cada registre té l'import del premi, la seva categoria, la moneda (en aquest cas, sempre seràn Euros) i l'any del sorteig.  
 
 ```{r, echo=FALSE}
+resum_lletres <- df %>%
+  count(letra) %>%
+  mutate(
+    lletra_txt = paste0(
+      ifelse(is.na(letra), "NA", letra),
+      ": ",
+      n
+    )
+  ) %>%
+  pull(lletra_txt) %>%
+  paste(collapse = " | ")
 resum_global <- tibble(
   Variable = c(
     "Anys analitzats",
     "Total de números",
     "Premi mínim (€)",
-    "Premi màxim (€)"
+    "Premi màxim (€)",
+    "Premi mitjà (€)",
+    "Distribució de lletres"
   ),
   Valor = c(
-    round(n_distinct(df$any)),
-    round(nrow(df)),
-    round(min(df$premio, na.rm = TRUE)),
-    round(max(df$premio, na.rm = TRUE))
+    n_distinct(df$any),
+    nrow(df),
+    min(df$premio, na.rm = TRUE),
+    max(df$premio, na.rm = TRUE),
+    round(mean(df$premio, na.rm = TRUE), 2),
+    resum_lletres
   )
 )
 
+# Taula final
 resum_global %>%
   kable(
-    caption = "Resum Conjunt de Dades",
+    caption = "Resum global de la Loteria de Nadal",
     format = "latex",
     booktabs = TRUE
   ) %>%
-  kable_styling(font_size = 9)
+  kable_styling(font_size = 9, full_width = FALSE, bootstrap_options = c("striped", "hover"))
+
 ```
+
