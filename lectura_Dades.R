@@ -1,9 +1,6 @@
-library(dplyr)
-library(stringr)
-library(tibble)
-library(stringi)
+library(dplyr); library(stringr); library(tibble); library(stringi)
 
-nateja <- function(dataset) {
+neteja <- function(dataset) {
   dataset %>%
     bind_rows(.) %>%
     mutate(
@@ -15,7 +12,7 @@ nateja <- function(dataset) {
       categoria = str_to_lower(categoria),
       categoria = recode(
         categoria, 
-        # errores de codificación
+        # errors de codificació
         "veinti n mil"   = "veintiún mil",
         "veintitr s mil" = "veintitrés mil",
         "veintid s mil"  = "veintidós mil",
@@ -23,7 +20,7 @@ nateja <- function(dataset) {
         "veintis is mil" = "veintiséis mil",
         "tr e s m i l"   = "tres mil",
         
-        # variantes sin tilde
+        # variants sense accents
         "veintidos mil"  = "veintidós mil",
         "veintitres mil" = "veintitrés mil",
         "veintiseis mil" = "veintiséis mil"
@@ -33,7 +30,7 @@ nateja <- function(dataset) {
 }
 
 
-leer_loteria <- function(archivo) {
+llegir <- function(archiu) {
   
   # Extraer año desde el nombre del archivo
   any <- as.integer(str_extract(basename(archivo), "\\d{4}"))
@@ -136,3 +133,4 @@ library(purrr); library(tidyverse)
 #archivos <- paste0("dades/b", a, ".txt")
 
 #datos_loteria <- map_dfr(archivos, leer_loteria)
+
