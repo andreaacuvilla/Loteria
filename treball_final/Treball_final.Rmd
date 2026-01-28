@@ -125,8 +125,32 @@ Tot seguit, mostrarem alguns exemples dels premis per familiaritzar-nos amb el t
 exemple <- head(datos[datos$any==2024,])
 exemple %>%
   kable(caption = "Primers premis de la Loteria de Nadal 2024") %>% 
-  kable_styling(full_width = FALSE, bootstrap_options = c("hover") )
+  kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover") )
 ```
 
+La taula mostra un extracte dels números premiats corresponents al sorteig del 2024. Cada fila representa un número premiat, identificat per la seva xifra, i inclou informació addicional com la lletra associada. A més, cada registre té l'import del premi, la seva categoria, la moneda (en aquest cas, sempre seràn Euros) i l'any del sorteig.  
 
+```{r, echo=FALSE}
+resum_global <- tibble(
+  Variable = c(
+    "Anys analitzats",
+    "Total de números",
+    "Premi mínim (€)",
+    "Premi màxim (€)"
+  ),
+  Valor = c(
+    round(n_distinct(df$any)),
+    round(nrow(df)),
+    round(min(df$premio, na.rm = TRUE)),
+    round(max(df$premio, na.rm = TRUE))
+  )
+)
 
+resum_global %>%
+  kable(
+    caption = "Resum Conjunt de Dades",
+    format = "latex",
+    booktabs = TRUE
+  ) %>%
+  kable_styling(font_size = 9)
+```
