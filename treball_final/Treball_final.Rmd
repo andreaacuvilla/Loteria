@@ -334,7 +334,8 @@ Analitzant tant l'històric complet com els últims 10 anys, les xifres que més
 
 Observant també les freqüències de xxx
 \newpage
-Annexos 
+
+Annexos
 =======================================================================================================================
 
 A continuació, introduirem el directori de Git-Hub on podràs trobar tot el codi d'R utilitzat:
@@ -345,6 +346,7 @@ POSAR URL NOU GITHUB!!!
 # References 
 
 (S'afegeixen al .bib que hi ha al Github pero ns si treure-ho pq nomes tenim el treball d'ell no?? o el posem?)
+
 
 
 
