@@ -18,6 +18,7 @@ csl: nature.csl
 ---
 ```{r include=FALSE, cache=FALSE}
 source("lectura_dades_final.R")
+datos <- read_excel("loteria_2015_2024.xlsx")
 ```
 
 Resum 
@@ -118,5 +119,6 @@ Realitzem una còpia de la informació d'aquest arxiu i la guardem en un fitxer 
 El codi encarregat de la lectura i del processament de les dades s'implementa en un script extern, que podeu trobar al directori del treball. També hem proporcionat el fitxer .xlsx corresponent, per tal que pugueu reproduir els resultats o utilitzar les dades.
 
 Tot seguit, mostrarem alguns exemples dels premis per familiaritzar-nos amb el tipus de dades amb què treballarem en aquest estudi.
+
 
 
