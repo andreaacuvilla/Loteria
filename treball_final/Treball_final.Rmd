@@ -184,3 +184,28 @@ La taula mostra un extracte dels números premiats corresponents al sorteig del 
 Materials i Mètodes
 =======================================================================================================================
 
+METODOLOGIA???
+
+Resultats
+=======================================================================================================================
+
+Presentació dels resultats (grafics i tal)
+------------------------------------------------------------------------------------------------------------------------
+
+Validació del model
+------------------------------------------------------------------------------------------------------------------------
+\newpage
+Conclusions 
+=======================================================================================================================
+\newpage
+Annexos 
+=======================================================================================================================
+
+A continuació, introduirem el directori de Git-Hub on podràs trobar tot el codi d'R utilitzat:
+
+POSAR URL NOU GITHUB!!!
+
+\newpage
+# References 
+
+(S'afegeixen al .bib que hi ha al Github pero ns si treure-ho pq nomes tenim el treball d'ell no?? o el posem?)
