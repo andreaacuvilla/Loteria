@@ -239,11 +239,100 @@ Podem observar que la Grossa ha aparegut amb més freqüència amb les terminaci
 Presentació dels resultats
 ------------------------------------------------------------------------------------------------------------------------
 
+(HE tret les lletras)
+```{r}
+top_categorias <- df %>%
+  filter(is.na(letra)) %>%
+  count(categoria, sort = TRUE) %>%
+  slice_head(n = 25) %>%
+  pull(categoria)
+
+df %>%
+  filter(!is.na(premio), categoria %in% top_categorias, is.na(letra)) %>%
+  ggplot(aes(x = categoria, y = premio)) +
+  geom_boxplot() +
+  scale_y_log10() +
+  labs(
+    title = "Distribució del premi per categoria (Top 25 sense lletra)",
+    x = "Categoria",
+    y = "Premi (€)"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
+
+```{r}
+a <- df %>%
+  filter(!is.na(premio)) %>%
+  filter(premio == max(premio)) %>%
+  mutate(
+    ultima_cifra = substr(numero, nchar(numero), nchar(numero))
+  ) %>%
+  count(ultima_cifra, sort=TRUE)
+
+a %>%
+  ggplot(aes(x = ultima_cifra, y = n)) +
+  geom_col() +
+  labs(
+    title = "Freqüència de l’última xifra",
+    x = "Última xifra del número",
+    y = "Nombre de vegades"
+  ) +
+  theme_minimal()
+```
+
+(cambiat a sense lletra:)
+```{r}
+df_digitos <- df %>%
+  filter(!is.na(numero)) %>%
+  mutate(numero = as.character(numero)) %>%
+  mutate(
+    d1 = substr(numero, 1, 1),
+    d2 = substr(numero, 2, 2),
+    d3 = substr(numero, 3, 3),
+    d4 = substr(numero, 4, 4),
+    d5 = substr(numero, 5, 5)
+  ) %>%
+  pivot_longer(
+    cols = d1:d5,
+    names_to = "posicio",
+    values_to = "digit"
+  )
+
+# Comptar la freqüència de cada dígit
+df_digitos %>%
+  count(digit) %>%
+  ggplot(aes(x = digit, y = n, fill = n)) +
+  geom_col(show.legend = FALSE) +
+  geom_text(aes(label = n), vjust = -0.5, size = 3, fontface = "bold") +
+  scale_fill_gradient(low = "skyblue", high = "steelblue") +
+  labs(
+    title = "Freqüència dels dígits en els números de la Loteria",
+    subtitle = "Anàlisi dels dígits de tots els números premiats",
+    x = "Dígits",
+    y = "Nombre d'aparicions"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    axis.text.x = element_text(face = "bold"),
+    axis.title = element_text(face = "bold"),
+    plot.title = element_text(face = "bold", size = 14),
+    plot.subtitle = element_text(size = 10)
+  )
+```
+
 Validació del model
 ------------------------------------------------------------------------------------------------------------------------
 \newpage
 Conclusions 
 =======================================================================================================================
+
+En primer lloc, hem pogut comprovar que el sorteig és efectivamen aleatori, per la qual cosa no podem predir el número guanyador. Tot i això, hem identificat alguns patrons que, encara que no impliquen causalitat, podem augmentar lleugerament les probabilitats de guanyar. 
+
+Analitzant tant l'històric complet com els últims 10 anys, les xifres que més han aparegut i que, per tant, asseguren al menys el reintegrament són: x, x, x, x.
+
+Observant també les freqüències de xxx
 \newpage
 Annexos 
 =======================================================================================================================
@@ -256,7 +345,6 @@ POSAR URL NOU GITHUB!!!
 # References 
 
 (S'afegeixen al .bib que hi ha al Github pero ns si treure-ho pq nomes tenim el treball d'ell no?? o el posem?)
-
 
 
 
