@@ -1,0 +1,27 @@
+
+
+```{r, message=FALSE, warning=FALSE}
+library(readxl);library(tidyverse)
+df <- read_excel("loteria_2015_2024.xlsx")
+```
+
+
+Anàlisi de Freqüències (Números més i menys premiats)
+```{r}
+freq <- df %>%
+  count(numero, name = "vegades_premiat") %>%
+  arrange(desc(vegades_premiat))
+
+print(head(freq, 10)); print(tail(freq,10))
+```
+
+Identificar números que no han sortit mai
+```{r}
+n <- tibble(numero = 00000:99999)
+
+freq <- freq %>%  mutate(numero = as.integer(numero))
+
+mai <- n %>%
+  anti_join(freq, by = "numero");
+nrow(mai)
+```
