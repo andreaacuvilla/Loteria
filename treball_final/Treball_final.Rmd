@@ -240,7 +240,7 @@ Presentació dels resultats
 ------------------------------------------------------------------------------------------------------------------------
 
 (HE tret les lletras)
-```{r}
+```{r, echo=FALSE}
 top_categorias <- df %>%
   filter(is.na(letra)) %>%
   count(categoria, sort = TRUE) %>%
@@ -262,7 +262,7 @@ df %>%
 
 ```
 
-```{r}
+```{r, echo=FALSE}
 a <- df %>%
   filter(!is.na(premio)) %>%
   filter(premio == max(premio)) %>%
@@ -283,7 +283,7 @@ a %>%
 ```
 
 (cambiat a sense lletra:)
-```{r}
+```{r, eccho=FALSE}
 df_digitos <- df %>%
   filter(!is.na(numero)) %>%
   mutate(numero = as.character(numero)) %>%
