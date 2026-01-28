@@ -84,21 +84,26 @@ Per on podem començar l'anàlisi?
 Exploració de les dades
 =======================================================================================================================
 
-A continuació presenterem diverses estadístiques descriptives així com visualitzacions gràfiques que permetràn poder observar el comportament de les dades.
+A continuació, presentarem diverses estadístiques descriptives i visualitzacions gràfiques que permetran observar el comportament de les dades.
 
 Lectura de dades 
 ------------------------------------------------------------------------------------------------------------------------
 
-En primer lloc, realitzarem una lectura inicial de tots els números premiats en el sorteig de la Loteria de Nadal corresponents al període entre 2000 i 2025. Les dades utilitzades provenen dels resultats oficials publicats un cop finalitzat cada sorteig. 
+En primer lloc, realitzarem una lectura inicial de tots els números premiats en els sortejos de la Loteria de Nadal corresponents al període 2011-2025. Les dades utilitzades provenen dels resultats oficials publicats després de cada sorteig per l'entitat corresponent.
 
-A l'endemà del sorteig, es publica el següent arxiu per comprovar si el número ha sigut premiat:
+L'endemà del sorteig, es publica l'arxiu corresponent per comprovar si un número ha estat premiat:
+
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.7\textwidth]{loteria.png}
   \caption{Resultats Sorteig loteria de nadal 2023}
 \end{figure}
 
-El codi encarregat de la lectura i el processament de les dades s'implementarà en un script extern, que importarem amb la funció \texttt{source()} d'R. A continuació, mostrarem alguns exemples dels premis per tal de familiaritzar-nos amb el tipus de dades amb què treballarem en l'estudi. 
+Realitzem una còpia de la informació d'aquest arxiu i la guardem en un fitxer .txt.
+
+El codi encarregat de la lectura i del processament de les dades s'implementa en un script extern, que podeu trobar al directori del treball. També hem proporcionat el fitxer .xlsx corresponent, per tal que pugueu reproduir els resultats o utilitzar les dades directament.
+
+Tot seguit, mostrarem alguns exemples dels premis per familiaritzar-nos amb el tipus de dades amb què treballarem en aquest estudi.
 
 ```{r}
 library(readxl)
@@ -117,20 +122,7 @@ exemple %>%
   kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover") )
 ```
 
-La taula mostra un extracte dels números premiats corresponents al sorteig del 2024. Cada fila representa un número premiat, identificat per la seva xifra, juntament amb informació addicional com la lletra associada. 
-
-Hi han tres tipus de lletra que ens podem trobar dins del nostre dataset:
-
-1. Lletra \textbf{t}:
-
-2. Lletra \textbf{a}:
-
-3. Lletra \textbf{b}:
-
-4. Lletra \textbf{c}:
-
-
-A més, també tindrem l'import del premi, la seva categoria i l'any.
+La taula mostra un extracte dels números premiats corresponents al sorteig del 2024. Cada fila representa un número premiat, identificat per la seva xifra, i inclou informació addicional com la lletra associada. A més, cada registre té l'import del premi, la seva categoria, la moneda (en aquest cas, sempre seràn Euros) i l'any del sorteig.  
 
 Anàlisi descriptiva
 ------------------------------------------------------------------------------------------------------------------------
@@ -493,4 +485,5 @@ https://github.com/MariaMM2204/Consultoria-2025
 
 \newpage
 # References 
+
 
