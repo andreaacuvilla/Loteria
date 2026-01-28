@@ -97,6 +97,8 @@ Més enllà de les boles extretes, existeixen premis calculats per la relació n
 
 -   3r Premi: Es tributa pel 20% de 10.000€ = 48.000€
 
+\newpage
+
 Exploració de les dades
 =======================================================================================================================
 
@@ -245,5 +247,6 @@ POSAR URL NOU GITHUB!!!
 # References 
 
 (S'afegeixen al .bib que hi ha al Github pero ns si treure-ho pq nomes tenim el treball d'ell no?? o el posem?)
+
 
 
