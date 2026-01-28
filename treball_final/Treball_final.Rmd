@@ -16,4 +16,105 @@ fontsize: 11
 # csl: chicago-author-date.csl
 csl: nature.csl
 ---
+```{r include=FALSE, cache=FALSE}
+source("lectura_dades_final.R")
+```
 
+Resum 
+====================================================
+
+El Sorteig Extraordinari de Nadal, conegut popularment com la Loteria de Nadal, és un dels esdeveniments més populars  d'Espanya i se celebra cada desembre des de 1812. Aquest estudi analitza els resultats històrics del sorteig, incloent els números guanyadors, premis i categories, amb l'objectiu de trobar patrons i distribucions de manera estadística.
+
+\newpage
+
+Descripció del conjunt de dades
+=======================================================================================================================
+
+Introducció de les dades 
+------------------------------------------------------------------------------------------------------------------------
+
+En aquest repositori es recull el desenvolupament del Treball Final de Consultoria Estadística 2025, centrat en l'anàlisi exhaustiva de la Loteria de Nadal des de la seva vessant més tècnica. L'objectiu no és sols descriure el sorteig, sinó avaluar amb rigor estadístic si la variabilitat dels resultats històrics (des del 2000 fins a l'anys 2025) respon purament a l'atzar o si existeixen anomalies mesurables en l'homogeneïtat del sistes,
+
+A través de metodologies de web scraping, tests d'independència .....
+
+La Loteria de Nadal no és sols un sorteig de boles; és l'unic moment de l'any en què un país sencer es posa d'acord per ignorar les lleis de l'estadística. Des d'un punt de vista matemàtic, és un "impost a l'esperança", però des del punt de vista de lesa dades, és un ecosistema fascinant.
+
+**L'arquitectura del "GORDO"**
+
+El sistema de la Loteria Nacional no treballa amb números a l'atzar, sinó amb una jerarquia rígida que determina les probabilitats reals d'èxit. L'estructura per al sorteig actualment es basa en:
+
+-   **Univers numèric:** 100.000 números únics (del 00000 al 99999). Això estableix una probabilitat base de guanyar el primer premi amb un sol dècim del 0.001%.
+
+-   **Emissió:** La societat Estatal de Loteries i Apostes de l'Estat (SELAE) ha emès per l'any pasat 197 sèries per cada números. Atès que cada sèrie es divideix en 10 dècims, hi ha un total de 1970 dècims de cada número al mercat.
+
+-   **Volum econòmic:** Amb un preu de 20€ per dècim, la recaptació potencial ascendeix a 3.940 milions d'euros. D'acord amb la normativa, el 70% d'aquest import es destina a premis.
+
+**Física i Homogeneïtat del Sorteig**
+
+Com assenyla el professor Llorenç Badiella, el que percebem com a folklore televisiu és, en realitat, un procés de física aplicada dissenyat per garantir l'equitat absoluta:
+
+-   **Les boles:** Hi ha 100.000 boles al bombo gran, totes fabricades en fusta de boix, amb un diàmetre de 3 cm i un pes unificat.
+
+-   **Impressió làser:** Per evitar que la pintura alteri el pes (eliminant la teoria que números amb molta tinta, com el 88888, pesen més que l'11111), els números estan gravats amb làser.
+
+-   **Mecànica:** Es fan servir dos bombos simultanis, el gran per als números i el petit per a les 1805 boles de premis. Els sorteif només finalitza quan el bombo de premis queda totalment buit.
+
+**El repartiment del "Pastís"**
+
+Tot i que el focus està en el "Gordo", la realitat és que el sorteig és una "pluja fina" de premis petits, per augmentar l'esperança per l'any que ve.
+
+| Premi                 | Import per dècim | Boles premiades     | Probabilitat |
+|--------------------|-----------------|-------------------|-----------------|
+| 1r premi ("el Gordo") | 400.000€         | 1                   | 0,001%       |
+| 2n premi              | 125.000€         | 1                   | 0,001%       |
+| 3r premi              | 50.000€          | 1                   | 0,001%       |
+| 4rt premi             | 20.000€          | 2                   | 0,002%       |
+| 5é premi              | 6.000€           | 8                   | 0,008%       |
+| La Pedrea             | 100€             | 1.794               | 1,794%       |
+| Reintegrament         | 20€              | 1 de cada 10 xifres | 10,00%       |
+
+**Premi per proximitat i derivat**
+
+Més enllà de les boles extretes, existeixen premis calculats per la relació numèrica amb els guanyadors:
+
+-   **Aproximacions (a):** Premien els números immediatament anterior i posterior del "Gordo", 2n premi i del tercer, on s'obtén 200€, 125€ i 96€ respectivament.
+
+-   **Centenes (c):** Es premien els 99 números que comparteixen les tres primeres xifres amb els quatre primers premis (tota la centena), on s'obtén 100€.
+
+-   **Terminacions (t):** Es premien els números que coincideixen en les dues últimes xifres amb els tres primers premis, on s'obtén 100€.
+
+-   **Reintegrament:** el retorn del valor del dècim (20€) si l'última xifra coincideix amb la del primer premi. Hi ha un 10% de probabilitat d'obtenir-lo.
+
+**L'impacte Fiscal**
+
+És important destacar que el premi "net" és inferior al nominal per a les quantitats grans. L'agència Tributària aplica un 20% d'impost a la quantitat que superi els 40.000€ (que estan exempts):
+
+-   Gordo: Es tributa pel 20% de 360.00€. Premi net = 328.000€
+
+-   2n Premi: Es tributa pel 20% de 85.000€. Premi net = 108.000€
+
+-   3r Premi: Es tributa pel 20% de 10.000€ = 48.000€
+
+Exploració de les dades
+=======================================================================================================================
+
+A continuació, presentarem diverses estadístiques descriptives i visualitzacions gràfiques que permetran observar el comportament de les dades.
+
+Lectura de dades 
+------------------------------------------------------------------------------------------------------------------------
+
+En primer lloc, realitzarem una lectura inicial de tots els números premiats en els sortejos de la Loteria de Nadal corresponents al període 2011-2025. Les dades utilitzades provenen dels resultats oficials publicats després de cada sorteig per l'entitat corresponent.
+
+L'endemà del sorteig, es publica l'arxiu corresponent per comprovar si un número ha estat premiat:
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.7\textwidth]{loteria.png}
+  \caption{Resultats Sorteig loteria de nadal 2023}
+\end{figure}
+
+Realitzem una còpia de la informació d'aquest arxiu i la guardem en un fitxer .txt.
+
+El codi encarregat de la lectura i del processament de les dades s'implementa en un script extern, que podeu trobar al directori del treball. També hem proporcionat el fitxer .xlsx corresponent, per tal que pugueu reproduir els resultats o utilitzar les dades directament.
+
+Tot seguit, mostrarem alguns exemples dels premis per familiaritzar-nos amb el tipus de dades amb què treballarem en aquest estudi.
