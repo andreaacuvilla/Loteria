@@ -217,8 +217,8 @@ ggplot(df_plot, aes(x = Terminació, y = n, fill = n)) +
   scale_fill_gradient(low = "skyblue", high = "steelblue") +
   labs(title = "Distribució de la última xifra dels números premiats",
        subtitle = "Resultats Històrics de la Loteria de Nadal",
-       x = "Última cifra",
-       y = "Frecuencia") +
+       x = "Última xifra",
+       y = "Freqüència") +
   theme_minimal(base_size = 14) +
   theme(axis.text.x = element_text(face = "bold"),
         axis.title = element_text(face = "bold"),
@@ -247,6 +247,7 @@ POSAR URL NOU GITHUB!!!
 # References 
 
 (S'afegeixen al .bib que hi ha al Github pero ns si treure-ho pq nomes tenim el treball d'ell no?? o el posem?)
+
 
 
 
