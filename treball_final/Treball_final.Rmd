@@ -105,7 +105,7 @@ Lectura de dades
 
 En primer lloc, realitzarem una lectura inicial de tots els números premiats en els sortejos de la Loteria de Nadal corresponents al període 2011-2025. Les dades utilitzades provenen dels resultats oficials publicats després de cada sorteig per l'entitat corresponent.
 
-L'endemà del sorteig, es publica l'arxiu corresponent per comprovar si un número ha estat premiat:
+L'endemà del sorteig, es publica l'arxiu seguent per comprovar si un número ha estat premiat:
 
 \begin{figure}[h]
   \centering
@@ -118,3 +118,4 @@ Realitzem una còpia de la informació d'aquest arxiu i la guardem en un fitxer 
 El codi encarregat de la lectura i del processament de les dades s'implementa en un script extern, que podeu trobar al directori del treball. També hem proporcionat el fitxer .xlsx corresponent, per tal que pugueu reproduir els resultats o utilitzar les dades directament.
 
 Tot seguit, mostrarem alguns exemples dels premis per familiaritzar-nos amb el tipus de dades amb què treballarem en aquest estudi.
+
