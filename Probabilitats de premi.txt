@@ -1,0 +1,36 @@
+###Probabilitat de premis
+
+```{r, warning = FALSE}
+boles <- 100000
+
+premis_grans <- 1
+prob_gran <- (premis_grans / boles)*100
+cat("Probabilitat que et toqui un 1r, 2n i 3r premi:", format(prob_gran, scientific = FALSE), "%\n")
+
+boles_4rt <- 2
+prob_4rt <- (boles_4rt / boles)*100
+cat("Probabilitat que et toqui un 4rt premi:", format(prob_4rt, scientific = FALSE), "%\n")
+
+boles_5e <- 8
+prob_5e <- (boles_5e / boles)*100
+cat("Probabilitat que et toqui un 5è premi:", format(prob_5e, scientific = FALSE), "%\n")
+
+boles_pedrea <- 1794
+prob_pedrea <- (boles_pedrea / boles)*100
+cat("Probabilitat que et toqui la Pedrea:", format(prob_pedrea, scientific = FALSE), "%\n")
+
+boles_aprox <- 2
+prob_aprox <- (boles_aprox / boles)*100
+cat("Probabilitat de l'aproximació del 1r, 2n i 3r:", format(prob_aprox, scientific = FALSE), "%\n")
+
+prob_term <- (1000*3 / boles)*100
+cat("Probabilitat de tenir les 2 últimes xifres (1r, 2n o 3r):", format(prob_term, scientific = FALSE), "%\n")
+
+prob_cent <- (100*5 / boles)*100
+cat("Probabilitat de tenir una centena (1r, 2n, 3r o 4rts):", format(prob_cent, scientific = FALSE), "%\n")
+
+total <- 10
+boles_rein <- 1
+prob_rein<- (1 / 10)*100
+cat("Probabilitat del reintegrament:", format(prob_rein, scientific = FALSE), "%\n")
+```
