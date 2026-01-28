@@ -24,9 +24,7 @@ library(knitr)
 Resum 
 ====================================================
 
-El Sorteig Extraordinari de Nadal, conegut popularment com la Loteria de Nadal, és un dels esdeveniments més populars a Espanya. El sorteig es celebra cada desembre des de l'any 1812. 
-
-L'objectiu principal d'aquest estudi es centra en l'anàlisi exhaustiva dels resultats històrics del sorteig, així com el desenvolupament d'un model capaç de predir els números guanyadors de la Loteria de Nadal. 
+El Sorteig Extraordinari de Nadal, conegut popularment com la Loteria de Nadal, és un dels esdeveniments més populars  d'Espanya i se celebra cada desembre des de 1812. Aquest estudi analitza els resultats històrics del sorteig, incloent els números guanyadors, premis i categories, amb l'objectiu de trobar patrons i distribucions de manera estadística.
 
 \newpage
 
@@ -495,3 +493,4 @@ https://github.com/MariaMM2204/Consultoria-2025
 
 \newpage
 # References 
+
