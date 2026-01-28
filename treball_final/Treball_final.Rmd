@@ -190,6 +190,7 @@ La hipòtesi nul·la que estem intentant analitzar és que **el sorteig de la Lo
 
 Per verificar-ho, hem estructurat l'anàlisi de la següent manera:
 \newpage
+
 Resultats
 =======================================================================================================================
 
@@ -255,6 +256,7 @@ POSAR URL NOU GITHUB!!!
 # References 
 
 (S'afegeixen al .bib que hi ha al Github pero ns si treure-ho pq nomes tenim el treball d'ell no?? o el posem?)
+
 
 
 
