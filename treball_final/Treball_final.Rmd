@@ -1,0 +1,19 @@
+---
+# setspace: doublespacing
+output: 
+    pdf_document:
+      includes:
+        in_header: import.sty
+        before_body: title.sty
+      keep_tex: yes
+      number_sections: yes
+      # toc: yes
+      toc_depth: 2
+
+# linestretch: 2
+bibliography: MasterOfCellTypes.bib
+fontsize: 11
+# csl: chicago-author-date.csl
+csl: nature.csl
+---
+
