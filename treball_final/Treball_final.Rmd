@@ -189,7 +189,7 @@ Materials i Mètodes
 La hipòtesi nul·la que estem intentant analitzar és que **el sorteig de la Loteria de Nadal és completament aleatori**, és a dir, que cada número té la mateixa probabilitat de ser premiat independentment de l'any. 
 
 Per verificar-ho, hem estructurat l'anàlisi de la següent manera:
-
+\newpage
 Resultats
 =======================================================================================================================
 
@@ -212,20 +212,28 @@ df_plot <- historial %>%
   mutate(Terminació = factor(Terminació, levels = 0:9))
 
 ggplot(df_plot, aes(x = Terminació, y = n, fill = n)) +
-  geom_col(show.legend = FALSE) +
-  geom_text(aes(label = n), vjust = -0.5, size = 4, fontface = "bold") + 
+  geom_col(show.legend = FALSE, width = 0.6) +
+  geom_text(aes(label = n), vjust = -0.4, size = 2.5, fontface = "bold") +
   scale_fill_gradient(low = "skyblue", high = "steelblue") +
-  labs(title = "Distribució de la última xifra dels números premiats",
-       subtitle = "Resultats Històrics de la Loteria de Nadal",
-       x = "Última xifra",
-       y = "Freqüència") +
-  theme_minimal(base_size = 14) +
-  theme(axis.text.x = element_text(face = "bold"),
-        axis.title = element_text(face = "bold"),
-        plot.title = element_text(face = "bold", size = 16),
-        plot.subtitle = element_text(size = 12))
+  labs(
+    title = "Distribució de l'última xifra",
+    subtitle = "Grossa 1812-2025",
+    x = "Última xifra",
+    y = "Freqüència"
+  ) +
+  theme_minimal(base_size = 9) +
+  theme(
+    axis.text.x = element_text(face = "bold", size = 8),
+    axis.title = element_text(face = "bold", size = 9),
+    plot.title = element_text(face = "bold", size = 10),
+    plot.subtitle = element_text(size = 8)
+  )
+
 ```
 
+(No em deixa fer la taula més petita ns si a tu et surt)
+
+Podem observar que la Grossa ha aparegut amb més freqüència amb les terminacions 5, 4, 8 i 0, en aquest ordre. Tot i que la probabilitat d’endur-se la Grossa és baixa, si el teu número coincideix en l’última xifra amb el premi, guanyaràs el reintegrament, assegurant-te així almenys de no perdre els diners invertits.
 
 Presentació dels resultats
 ------------------------------------------------------------------------------------------------------------------------
@@ -247,6 +255,7 @@ POSAR URL NOU GITHUB!!!
 # References 
 
 (S'afegeixen al .bib que hi ha al Github pero ns si treure-ho pq nomes tenim el treball d'ell no?? o el posem?)
+
 
 
 
