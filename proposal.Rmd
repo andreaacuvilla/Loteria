@@ -42,44 +42,59 @@ La Loteria de Nadal no és sols un sorteig de boles; és l'unic moment de l'any 
 
 **L'arquitectura del "GORDO"**
 
-La loteria no ven números a l'atzar, sinó que segueix una jerarquia rígida que determina quants diners es mouen i quina probabilitat real tens de guanyar.
+El sistema de la Loteria Nacional no treballa amb números a l'atzar, sinó amb una jerarquia rígida que determina les probabilitats reals d'èxit. L'estructura per al sorteig actualment es basa en:
 
-El sistema treballa amb un ventall de 100.000 números (des del 00000 fins al 99999). Això ens deixa una probabilitat de guanyar el primer premi amb un sol dècim de un 0.001%.
+-   **Univers numèric:** 100.000 números únics (del 00000 al 99999). Això estableix una probabilitat base de guanyar el primer premi amb un sol dècim del 0.001%.
 
-Per al 2025, SELAE (Societat Estatal Loteries i Apostes de l'Estat) va emetre 197 sèries de cada número. Això significa que de cada número n'hi ha 197 billets idèntic repartits per tot l'estat. On cada sèroe es dovodeox en 10 dècims, el que ens dona un total de 1970 dècims per cada número.
+-   **Emissió:** La societat Estatal de Loteries i Apostes de l'Estat (SELAE) ha emès per l'any pasat 197 sèries per cada números. Atès que cada sèrie es divideix en 10 dècims, hi ha un total de 1970 dècims de cada número al mercat.
 
-- Preu del dècim: 20€
-- Recaptació potencila, si es ven tot, el sorteig mou 3940 milions d'euros. D'aquests, el 705 es destina a premis.
+-   **Volum econòmic:** Amb un preu de 20€ per dècim, la recaptació potencial ascendeix a 3.940 milions d'euros. D'acord amb la normativa, el 70% d'aquest import es destina a premis.
 
-El que veiem a la tele és folkore, però el que hi ha dins dels bombos és física pura. com ens explica el professor Badiella, el sistema està dissenyat per se homogeni.
+**Física i Homogeneïtat del Sorteig**
 
-Hi ha 100.000 boles al bombo gran, totes fetes de gusta deboic, amb un diàmetre de 3cm i un pes unificat. On per evitar que el pes de la pintura alteri el camí de la bola cap a la trompeta, els números estan impresos amb l'àser. Així s'elimina la teoria que els números amb més "tinta", com el 88.888, pesen més que el 11.111.
+Com assenyla el professor Llorenç Badiella, el que percebem com a folklore televisiu és, en realitat, un procés de física aplicada dissenyat per garantir l'equitat absoluta:
 
-Per a realtizar el sorteig es fan servis dos bombos que giren simultàniament: un per als números i un latre amb les 1807 boles de premis. fins que el bombo petit no queda buit, el sorteig no es dona per acabat.
+-   **Les boles:** Hi ha 100.000 boles al bombo gran, totes fabricades en fusta de boix, amb un diàmetre de 3 cm i un pes unificat.
+
+-   **Impressió làser:** Per evitar que la pintura alteri el pes (eliminant la teoria que números amb molta tinta, com el 88888, pesen més que l'11111), els números estan gravats amb làser.
+
+-   **Mecànica:** Es fan servir dos bombos simultanis, el gran per als números i el petit per a les 1805 boles de premis. Els sorteif només finalitza quan el bombo de premis queda totalment buit.
 
 **El repartiment del "Pastís"**
 
-Tot i que el focus està en el Gordo, la realitat és que el sorteig és una pluja fina de premis petits que serveixen per "alimentar l'esperança" de cara a l'anys següent.
+Tot i que el focus està en el "Gordo", la realitat és que el sorteig és una "pluja fina" de premis petits, per augmentar l'esperança per l'any que ve.
 
-| Premi | Import per dècim | Boles premiades | Probabilitat |
-|------|------------------|-----------------|--------------|
-| 1r premi ("el Gordo") | 400.000€ | 1 | 0,001% |
-| 2n premi | 125.000€ | 1 | 0,001% |
-| 3r premi | 50.000€ | 1 | 0,001% |
-| 4rt premi | 20.000€ | 2 | 0,002% |
-| 5é premi | 6.000€ | 8 | 0,008% |
-| La Pedrea | 100€ | 1.794 | 1,794% |
-| Reintegrament | 20€ | 1 de cada 10 xifres | 10,00% |
+| Premi                 | Import per dècim | Boles premiades     | Probabilitat |
+|--------------------|-----------------|-------------------|-----------------|
+| 1r premi ("el Gordo") | 400.000€         | 1                   | 0,001%       |
+| 2n premi              | 125.000€         | 1                   | 0,001%       |
+| 3r premi              | 50.000€          | 1                   | 0,001%       |
+| 4rt premi             | 20.000€          | 2                   | 0,002%       |
+| 5é premi              | 6.000€           | 8                   | 0,008%       |
+| La Pedrea             | 100€             | 1.794               | 1,794%       |
+| Reintegrament         | 20€              | 1 de cada 10 xifres | 10,00%       |
 
-Aleshores amb aquesta informació la probabilitat de que et toqui el Gordo és la mateixa que la de qualsevol número, 0,001%. Gairebé el 99% dels números que reben premi directe del bombo són pedres de 100€ (1.794 de 1.807). Per altra banda, tenim un 10% de possibilitats de recuperar 20€ si l'última xifra del teu número coincideix amb la del Gordo.
+**Premi per proximitat i derivat**
 
-Hem de recordar que per als tres primers premis, el premi realment és menor, ja que Hisenda entra al joc aplicant un 20% d'impost a qualsevol premi que superi els 40.000€. Això vol dir que, el guanyador del primer premi realment es de 328.000€, ja que els premiers 40.000€ estan exempts i es paga 20% dels 360.000€ restant. El segon premi sseria de 108.000€ i del trecer 48.000€.
+Més enllà de les boles extretes, existeixen premis calculats per la relació numèrica amb els guanyadors:
 
-Per on podem començar l'anàlisi?
+-   **Aproximacions (a):** Premien els números immediatament anterior i posterior del "Gordo", 2n premi i del tercer, on s'obtén 200€, 125€ i 96€ respectivament.
 
-1. Històric de terminacions: quins números han sortir més.
-2. Geografia de la sort: Analitzar si és veritat que el premi toca més a Madrid o Barcelona, o si és simplement perquè s'hi venene més dècims.
-3. Simulació de Montecarlo (proposta gemini): crear un script en R que simuli 10.000 sortejos per veure queantes vegades guanyaries el Gordo si juguessis el mateix número durant 100 anys.
+-   **Centenes (c):** Es premien els 99 números que comparteixen les tres primeres xifres amb els quatre primers premis (tota la centena), on s'obtén 100€.
+
+-   **Terminacions (t):** Es premien els números que coincideixen en les dues últimes xifres amb els tres primers premis, on s'obtén 100€.
+
+-   **Reintegrament:** el retorn del valor del dècim (20€) si l'última xifra coincideix amb la del primer premi. Hi ha un 10% de probabilitat d'obtenir-lo.
+
+**L'impacte Fiscal**
+
+És important destacar que el premi "net" és inferior al nominal per a les quantitats grans. L'agència Tributària aplica un 20% d'impost a la quantitat que superi els 40.000€ (que estan exempts):
+
+-   Gordo: Es tributa pel 20% de 360.00€. Premi net = 328.000€
+
+-   2n Premi: Es tributa pel 20% de 85.000€. Premi net = 108.000€
+
+-   3r Premi: Es tributa pel 20% de 10.000€ = 48.000€
 
 Exploració de les dades
 =======================================================================================================================
@@ -485,5 +500,6 @@ https://github.com/MariaMM2204/Consultoria-2025
 
 \newpage
 # References 
+
 
 
