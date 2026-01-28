@@ -121,16 +121,17 @@ El codi encarregat de la lectura i del processament de les dades s'implementa en
 
 Tot seguit, mostrarem alguns exemples dels premis per familiaritzar-nos amb el tipus de dades amb què treballarem en aquest estudi.
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, results='asis'}
+library(kableExtra)
+
+# Taula 1
 exemple <- head(datos[datos$any==2024,])
-exemple %>%
-  kable(caption = "Primers premis de la Loteria de Nadal 2024") %>% 
-  kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover") )
-```
+taula1 <- exemple %>%
+  kable(format = "latex", booktabs = TRUE) %>% 
+  kable_styling(font_size = 9, latex_options = "HOLD_position")
 
-La taula mostra un extracte dels números premiats corresponents al sorteig del 2024. Cada fila representa un número premiat, identificat per la seva xifra, i inclou informació addicional com la lletra associada. A més, cada registre té l'import del premi, la seva categoria, la moneda (en aquest cas, sempre seràn Euros) i l'any del sorteig.  
-
-```{r, echo=FALSE}
+# Taula 2
+options(scipen = 999)
 resum_lletres <- df %>%
   count(letra) %>%
   mutate(
@@ -142,33 +143,39 @@ resum_lletres <- df %>%
   ) %>%
   pull(lletra_txt) %>%
   paste(collapse = " | ")
+
 resum_global <- tibble(
   Variable = c(
     "Anys analitzats",
     "Total de números",
     "Premi mínim (€)",
     "Premi màxim (€)",
-    "Premi mitjà (€)",
-    "Distribució de lletres"
+    "Lletres"
   ),
   Valor = c(
     n_distinct(df$any),
     nrow(df),
     min(df$premio, na.rm = TRUE),
     max(df$premio, na.rm = TRUE),
-    round(mean(df$premio, na.rm = TRUE), 2),
     resum_lletres
   )
 )
 
-# Taula final
-resum_global %>%
-  kable(
-    caption = "Resum global de la Loteria de Nadal",
-    format = "latex",
-    booktabs = TRUE
-  ) %>%
-  kable_styling(font_size = 9, full_width = FALSE, bootstrap_options = c("striped", "hover"))
+taula2 <- resum_global %>%
+  kable(format = "latex", booktabs = TRUE) %>%
+  kable_styling(font_size = 9, latex_options = "HOLD_position")
 
+# Posar-les juntes
+cat("\\begin{table}[ht]
+\\begin{minipage}{0.55\\textwidth}
+", taula1, "
+\\captionof{table}{Primers premis de la Loteria de Nadal 2024}
+\\end{minipage}
+\\hfill
+\\begin{minipage}{0.45\\textwidth}
+", taula2, "
+\\captionof{table}{Resum global de la Loteria de Nadal}
+\\end{minipage}
+\\end{table}")
 ```
-
+La taula mostra un extracte dels números premiats corresponents al sorteig del 2024. Cada fila representa un número premiat, identificat per la seva xifra, i inclou informació addicional com la lletra associada. A més, cada registre té l'import del premi, la seva categoria, la moneda (en aquest cas, sempre seràn Euros) i l'any del sorteig.  En el període de 10 anys que analitzarem, hi han hagut 53.050 números premiats. 
