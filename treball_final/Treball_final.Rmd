@@ -201,7 +201,7 @@ Tot i que l'anàlisi principal del nostre estudi se centra en el període 2011-2
 Així podrem comprovar si hi ha algun patró al llarg dels més de 200 anys de sortejos. A continuació es mostra el gràfic de barres amb la freqüència de cada última xifra de la Grossa:
 
 ```{r, echo=FALSE}
-historial <- read_table2(
+historial <- read_table(
   "historial_gordo.txt",
   col_types = cols(
     Any = col_integer(),
@@ -247,6 +247,7 @@ POSAR URL NOU GITHUB!!!
 # References 
 
 (S'afegeixen al .bib que hi ha al Github pero ns si treure-ho pq nomes tenim el treball d'ell no?? o el posem?)
+
 
 
 
