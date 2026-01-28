@@ -110,12 +110,13 @@ L'endemà del sorteig, es publica l'arxiu seguent per comprovar si un número ha
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.7\textwidth]{loteria.png}
-  \caption{Resultats Sorteig loteria de nadal 2023}
+  \caption{Resultats Sorteig Loteria de Nadal (2023)}
 \end{figure}
 
 Realitzem una còpia de la informació d'aquest arxiu i la guardem en un fitxer .txt.
 
-El codi encarregat de la lectura i del processament de les dades s'implementa en un script extern, que podeu trobar al directori del treball. També hem proporcionat el fitxer .xlsx corresponent, per tal que pugueu reproduir els resultats o utilitzar les dades directament.
+El codi encarregat de la lectura i del processament de les dades s'implementa en un script extern, que podeu trobar al directori del treball. També hem proporcionat el fitxer .xlsx corresponent, per tal que pugueu reproduir els resultats o utilitzar les dades.
 
 Tot seguit, mostrarem alguns exemples dels premis per familiaritzar-nos amb el tipus de dades amb què treballarem en aquest estudi.
+
 
