@@ -184,7 +184,9 @@ La taula mostra un extracte dels números premiats corresponents al sorteig del 
 Materials i Mètodes
 =======================================================================================================================
 
-METODOLOGIA???
+La hipòtesi nul·la que estem intentant analitzar és que **el sorteig de la Loteria de Nadal és completament aleatori**, és a dir, que cada número té la mateixa probabilitat de ser premiat independentment de l'any. 
+
+Per verificar-ho, hem estructurat l'anàlisi de la següent manera:
 
 Resultats
 =======================================================================================================================
@@ -209,3 +211,4 @@ POSAR URL NOU GITHUB!!!
 # References 
 
 (S'afegeixen al .bib que hi ha al Github pero ns si treure-ho pq nomes tenim el treball d'ell no?? o el posem?)
+
