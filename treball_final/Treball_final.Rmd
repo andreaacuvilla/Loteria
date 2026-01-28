@@ -121,6 +121,12 @@ El codi encarregat de la lectura i del processament de les dades s'implementa en
 
 Tot seguit, mostrarem alguns exemples dels premis per familiaritzar-nos amb el tipus de dades amb què treballarem en aquest estudi.
 
+```{r, echo = FALSE}
+exemple <- head(datos[datos$any==2024,])
+exemple %>%
+  kable(caption = "Primers premis de la Loteria de Nadal 2024") %>% 
+  kable_styling(full_width = FALSE, bootstrap_options = c("hover") )
+```
 
 
 
