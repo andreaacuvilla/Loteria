@@ -1,20 +1,79 @@
 #Importem els paquets necessàris
-
 library(dplyr)
 library(stringr)
 library(tibble)
 library(stringi)
-library(readxl)
-library(knitr)
-library(kableExtra)
 library(readr)
-
+library(writexl)
+library(purrr)
 
 #Lectura de dades
+
 llegir <- function(arxiu) {
   
   any_v <- as.integer(str_extract(basename(arxiu), "\\d{4}"))
-  
+  if (any_v <= 2001) {
+    
+    linies <- readLines(arxiu, encoding = "latin1", warn = FALSE)
+    linies <- paste(linies, collapse = "\n")
+    patro_num <- "(\\d{5})\\s+([\\.a-z]+)(\\d+)"
+    seq <- str_match_all(linies, patro_num)[[1]]
+    
+    if (nrow(seq) == 0) return(tibble())
+    
+    premis <- tibble(
+      numero = seq[, 2],
+      lletres = seq[, 3],
+      premi = as.numeric(seq[, 4])
+    )
+    
+    categoria <- function(numero) {
+      n <- as.integer(numero)
+      if (n < 10) "unidad"
+      else if (n < 100) "decena"
+      else if (n < 1000) "centena"
+      else if (n < 2000) "mil"
+      else if (n < 3000) "dos mil"
+      else if (n < 4000) "tres mil"
+      else if (n < 5000) "cuatro mil"
+      else if (n < 6000) "cinco mil"
+      else if (n < 7000) "seis mil"
+      else if (n < 8000) "siete mil"
+      else if (n < 9000) "ocho mil"
+      else if (n < 10000) "nueve mil"
+      else if (n < 20000) "diez mil"
+      else if (n < 30000) "veinte mil"
+      else if (n < 40000) "treinta mil"
+      else if (n < 50000) "cuarenta mil"
+      else if (n < 60000) "cincuenta mil"
+      else if (n < 70000) "sesenta mil"
+      else if (n < 80000) "setenta mil"
+      else if (n < 90000) "ochenta mil"
+      else "noventa mil"
+    }
+    
+    dades <- premis %>%
+      mutate(
+        lletra = "",
+        categoria = sapply(numero, categoria),
+        any = any_v
+      )
+    
+    for (i in seq_len(nrow(dades))) {
+      txt <- dades$lletres[i]
+      
+      if (str_detect(txt, "\\.t\\.\\.")) dades$lletra[i] <- "t"
+      else if (str_detect(txt, "\\.c\\.\\.")) dades$lletra[i] <- "c"
+      else if (str_detect(txt, "\\.a\\.\\.")) dades$lletra[i] <- "a"
+      else {
+        chars <- str_split(txt, "")[[1]]
+        lletra <- chars[chars != "." & str_detect(chars, "[A-Za-z]")]
+        if (length(lletra) > 0) dades$lletra[i] <- lletra[1]
+      }
+    }
+    return(dades %>% select(numero, lletra, premi, categoria, any))
+  }
+
   linies <- readLines(arxiu, warn = FALSE)
   linies <- stri_enc_toutf8(linies)
   linies <- str_trim(linies)
@@ -25,11 +84,17 @@ llegir <- function(arxiu) {
   
   i <- 1
   while (i <= length(linies)) {
+    
     l <- linies[i]
-    if (str_detect(l, "^[A-Za-zÁÉÍÓÚáéíóúñÑ ]+$") && !str_detect(l, "^\\d{5}")) {
+    
+    # Categoria multilinea
+    if (str_detect(l, "^[A-Za-zÁÉÍÓÚáéíóúñÑ ]+$") &&
+        !str_detect(l, "^\\d{5}")) {
+      
       cat_tmp <- l
       j <- i + 1
-      while(j <= length(linies) && !str_detect(linies[j], "^\\d{5}")) {
+      while (j <= length(linies) &&
+             !str_detect(linies[j], "^\\d{5}")) {
         cat_tmp <- str_c(cat_tmp, str_trim(linies[j]), sep = " ")
         j <- j + 1
       }
@@ -38,17 +103,16 @@ llegir <- function(arxiu) {
       next
     }
     
+    # Numero / importe / EUROS
     if (str_detect(l, "^\\d{5}$")) {
-      numero <- l
-      if (i + 2 <= length(linies) && 
-          str_detect(linies[i+1], "^[\\d\\.,]+$") && 
-          str_detect(linies[i+2], "EUROS")) {
+      if (i + 2 <= length(linies) &&
+          str_detect(linies[i + 1], "^[\\d\\.,]+$") &&
+          str_detect(linies[i + 2], "EUROS")) {
         
-        premi_valor <- as.numeric(str_remove_all(linies[i+1], "\\.|,"))
         res[[length(res) + 1]] <- tibble(
-          numero = numero,
+          numero = l,
           lletra = NA_character_,
-          premi = premi_valor,
+          premi = as.numeric(str_remove_all(linies[i + 1], "[\\.,]")),
           categoria = categoria_actual,
           any = any_v
         )
@@ -57,15 +121,12 @@ llegir <- function(arxiu) {
       }
     }
     
+    # Todo en una línea
     if (str_detect(l, "^\\d{5}")) {
-      numero <- str_extract(l, "^\\d{5}")
-      lletra <- ifelse(str_detect(l, "\\bt\\b"), "t", NA_character_)
-      premi_valor <- as.numeric(str_extract(l, "\\d+$"))
-      
       res[[length(res) + 1]] <- tibble(
-        numero = numero,
-        lletra = lletra,
-        premi = premi_valor,
+        numero = str_extract(l, "^\\d{5}"),
+        lletra = str_extract(l, "\\b[abct]\\b"),
+        premi = as.numeric(str_extract(l, "\\d+$")),
         categoria = categoria_actual,
         any = any_v
       )
@@ -76,28 +137,26 @@ llegir <- function(arxiu) {
     i <- i + 1
   }
   
-  return(bind_rows(res))
+  bind_rows(res)
 }
 
-#Processament de les dades
+####################################
+# LIMPIEZA
+####################################
 nateja <- function(dataset) {
   dataset %>%
-    bind_rows(.) %>%
     mutate(
       premi = as.numeric(premi),
       categoria = str_trim(categoria),
       categoria = str_to_lower(categoria),
       categoria = recode(
-        categoria, 
-        # errores de codificación
+        categoria,
         "veinti n mil"   = "veintiún mil",
         "veintitr s mil" = "veintitrés mil",
         "veintid s mil"  = "veintidós mil",
         "diecis is mil"  = "dieciséis mil",
         "veintis is mil" = "veintiséis mil",
         "tr e s m i l"   = "tres mil",
-        
-        # variantes sin tilde
         "veintidos mil"  = "veintidós mil",
         "veintitres mil" = "veintitrés mil",
         "veintiseis mil" = "veintiséis mil"
@@ -106,12 +165,13 @@ nateja <- function(dataset) {
     )
 }
 
+####################################
+# MAIN
+####################################
+anys <- 2000:2025
+arxius <- paste0("dades/b", anys, ".txt")
 
-#MAIN:
-library(purrr); library(tidyverse)
+dades <- map_dfr(arxius, llegir)
+dades <- nateja(dades)
 
-#Años
-a <- 2015:2024
-archivos <- paste0("sdf/", a, ".txt")
-datos_loteria <- map_dfr(archivos, leer_loteria)
-dades <- 
+write_xlsx(dades, "loteria-2000-2025.xlsx")
