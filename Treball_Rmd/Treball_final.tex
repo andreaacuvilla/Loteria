@@ -1,0 +1,821 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  11,
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{setspace}
+% this is a lorem ipsum generator for adding dummy texts
+\usepackage{lipsum}
+\usepackage{tocloft}
+% to make the first rows bold in tables
+\usepackage{longtable}
+\usepackage{tabu}
+\usepackage{booktabs}
+% this makes list of figures appear in table of contents
+\usepackage[nottoc]{tocbibind}
+
+% for passing temporary notes
+\usepackage{todonotes}
+
+\usepackage{morefloats}
+\usepackage{float}
+
+% highlighting
+\usepackage{soul}
+
+% referencing mutliple things with a single command - \cref
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{caption}
+
+% this makes dots in table of contents
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+% to change the title of contents
+% \renewcommand{\contentsname}{Whatever}
+
+% line numbers for review purposes
+% this package might not be available in default latex installation 
+% get it by 'sudo tlmgr install lineno'
+%\usepackage{lineno}
+%\linenumbers
+
+% this allows checkmarks in the file
+\usepackage{amssymb}
+\DeclareUnicodeCharacter{2714}{\checkmark}
+
+% to be able to include latex comments
+\newenvironment{dummy}{}{}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+
+\onehalfspacing
+\pagenumbering{gobble} 
+%\begin{titlepage} 
+\begin{center}
+ \vspace*{2\baselineskip} 
+\includegraphics[width=0.25\textwidth]{UAB.png}\\
+\vspace*{5\baselineskip}
+\normalsize{Universitat Autònoma de Barcelona}\\
+\normalsize{\textbf{Consultoria Estadística}}
+ \LARGE{\textbf{}}\\
+ \vspace*{5\baselineskip} 
+\Large{\textbf{LOTERIA DE NADAL}}\\ 
+\vspace*{2\baselineskip} 
+\Large{Andrea Acuña Villagaray (1639232)\\ Maria Marín Méndez (1668394)\\}
+\vspace*{3\baselineskip}
+\Large{\textbf{4 de Febrer, 2026}}\\ 
+\end{center} 
+% \end{titlepage} 
+\doublespacing 
+\hypersetup{linkcolor = black} 
+\newpage 
+\pagenumbering{roman} 
+\tableofcontents 
+\addcontentsline{toc}{section}{\contentsname} 
+\newpage % list of figures have to be added manually to table of contents 
+\doublespacing 
+\newpage 
+\pagenumbering{arabic} 
+\hypersetup{linkcolor = blue}
+
+\section{Resum}\label{resum}
+
+Aquest estudi realitza una anàlisi exhaustiva de la Loteria de Nadal
+(període 2000-2025) per dets de \emph{web scraping} i modelització
+avançada, les autores han validat la integritat del sistema, concloent
+que:
+
+\begin{itemize}
+\item
+  L'equitat física està garantida: L'ús de boles de fusta de boix amb
+  gravat làser evita biaixos per pes de tinta.
+\item
+  Convergència a la uniformitat: L'estudi de més de 45.000 boles
+  extretes confirma que totes les terminacions tenen probabilitats
+  similars, seguint la Llei dels Grans Nombres.
+\item
+  Incapacitat predictiva: S'han testejat models de \emph{Machine
+  Learning} (Random Forest) i estadístics (LMM, GLM Gamma) per intentar
+  predir el premi segons la paritat o la suma de dígits, sense èxit. El
+  sorteig és, a efectes pràctics, atzar pur.
+\end{itemize}
+
+\newpage
+
+\section{Objectiu i motivacions del
+treball}\label{objectiu-i-motivacions-del-treball}
+
+L'estudi no neix sols d'una curiositat acadèmica, sinó d'una disputa
+familiar clàssica que es repeteix cada desembre a cada d'una de les
+autores.
+
+L'interès per aquest tema sorgeix de la dinàmica entre el seu germà,
+d'esperit profundament científic i recional, i la seva mare. Cada any,
+quan arriba el moment de comprar els dècims, s'encén el debat on el seu
+germà sosté amb fermesa que la loteria és una pèrdua de temps i diners,
+argumentant que estadíticament, ``mai toca res'' i la seva mare, en
+canvi, manté viva il·lusió i la tradició, convençuda que, per petita que
+sigui la probabilitat, ``alguna cosa tocarà''.
+
+Aquesta tensió entre el rigor científic i la il·lusió popular ha estat
+el motor per plantejar els següents objectius:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Verificar l'aleatorietat}: Determinar si el sorteig és
+  realment atzarós o si el germà té raó en la seva visió escèptica.
+\item
+  \textbf{Avaluar la predictibilitat}: Comprovar si existeix alguna
+  estratègia basada en dades històriques que pugui donar la raó a la
+  mare i augmentar les possibilitats de guanyar.
+\item
+  \textbf{Analitzar mites populars}: Sotmetre a prova creences com la
+  dels números ``bonics'' o la paritat per veure si tenen fonament real.
+\end{enumerate}
+
+\newpage
+
+\section{Loteria de Nadal}\label{loteria-de-nadal}
+
+En aquest repositori es recull el desenvolupament del Treball Final de
+Consultoria Estadística 2025, centrat en l'anàlisi exhaustiva de la
+Loteria de Nadal des de la seva vessant més tècnica. L'objectiu no és
+sols descriure el sorteig, sinó avaluar amb rigor estadístic si la
+variabilitat dels resultats històrics (des del 2000 fins a l'anys 2025)
+respon purament a l'atzar o si existeixen anomalies mesurables en
+l'homogeneïtat del sistes,
+
+A través de metodologies de web scraping, tests d'independència, etc
+
+La Loteria de Nadal no és sols un sorteig de boles; és l'unic moment de
+l'any en què un país sencer es posa d'acord per ignorar les lleis de
+l'estadística. Des d'un punt de vista matemàtic, és un ``impost a
+l'esperança'', però des del punt de vista de lesa dades, és un
+ecosistema fascinant.
+
+\textbf{L'arquitectura del ``GORDO''}
+
+El sistema de la Loteria Nacional no treballa amb números a l'atzar,
+sinó amb una jerarquia rígida que determina les probabilitats reals
+d'èxit. L'estructura per al sorteig actualment es basa en:
+
+\begin{itemize}
+\item
+  \textbf{Univers numèric:} 100.000 números únics (del 00000 al 99999).
+  Això estableix una probabilitat base de guanyar el primer premi amb un
+  sol dècim del 0.001\%.
+\item
+  \textbf{Emissió:} La societat Estatal de Loteries i Apostes de l'Estat
+  (SELAE) ha emès per l'any pasat 197 sèries per cada números. Atès que
+  cada sèrie es divideix en 10 dècims, hi ha un total de 1970 dècims de
+  cada número al mercat.
+\item
+  \textbf{Volum econòmic:} Amb un preu de 20€ per dècim, la recaptació
+  potencial ascendeix a 3.940 milions d'euros. D'acord amb la normativa,
+  el 70\% d'aquest import es destina a premis.
+\end{itemize}
+
+\textbf{Física i Homogeneïtat del Sorteig}
+
+Com assenyla el professor Llorenç Badiella, el que percebem com a
+folklore televisiu és, en realitat, un procés de física aplicada
+dissenyat per garantir l'equitat absoluta:
+
+\begin{itemize}
+\item
+  \textbf{Les boles:} Hi ha 100.000 boles al bombo gran, totes
+  fabricades en fusta de boix, amb un diàmetre de 3 cm i un pes
+  unificat.
+\item
+  \textbf{Impressió làser:} Per evitar que la pintura alteri el pes
+  (eliminant la teoria que números amb molta tinta, com el 88888, pesen
+  més que l'11111), els números estan gravats amb làser.
+\item
+  \textbf{Mecànica:} Es fan servir dos bombos simultanis, el gran per
+  als números i el petit per a les 1805 boles de premis. Els sorteif
+  només finalitza quan el bombo de premis queda totalment buit.
+\end{itemize}
+
+\textbf{El repartiment del ``Pastís''}
+
+Tot i que el focus està en el ``Gordo'', la realitat és que el sorteig
+és una ``pluja fina'' de premis petits, per augmentar l'esperança per
+l'any que ve.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2603}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2466}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2466}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2466}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Premi
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Import per dècim
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Boles premiades
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Probabilitat
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1r premi (``el Gordo'') & 400.000€ & 1 & 0,001\% \\
+2n premi & 125.000€ & 1 & 0,001\% \\
+3r premi & 50.000€ & 1 & 0,001\% \\
+4rt premi & 20.000€ & 2 & 0,002\% \\
+5é premi & 6.000€ & 8 & 0,008\% \\
+La Pedrea & 100€ & 1.794 & 1,794\% \\
+Reintegrament & 20€ & 1 de cada 10 xifres & 10,00\% \\
+\end{longtable}
+
+\textbf{Premi per proximitat i derivat}
+
+Més enllà de les boles extretes, existeixen premis calculats per la
+relació numèrica amb els guanyadors:
+
+\begin{itemize}
+\item
+  \textbf{Aproximacions (a):} Premien els números immediatament anterior
+  i posterior del ``Gordo'', 2n premi i del tercer, on s'obtén 200€,
+  125€ i 96€ respectivament.
+\item
+  \textbf{Centenes (c):} Es premien els 99 números que comparteixen les
+  tres primeres xifres amb els quatre primers premis (tota la centena),
+  on s'obtén 100€.
+\item
+  \textbf{Terminacions (t):} Es premien els números que coincideixen en
+  les dues últimes xifres amb els tres primers premis, on s'obtén 100€.
+\item
+  \textbf{Reintegrament:} el retorn del valor del dècim (20€) si
+  l'última xifra coincideix amb la del primer premi. Hi ha un 10\% de
+  probabilitat d'obtenir-lo.
+\end{itemize}
+
+\newpage
+
+\textbf{L'impacte Fiscal}
+
+És important destacar que el premi ``net'' és inferior al nominal per a
+les quantitats grans. L'agència Tributària aplica un 20\% d'impost a la
+quantitat que superi els 40.000€ (que estan exempts):
+
+\begin{itemize}
+\item
+  Gordo: Es tributa pel 20\% de 360.00€. Premi net = 328.000€
+\item
+  2n Premi: Es tributa pel 20\% de 85.000€. Premi net = 108.000€
+\item
+  3r Premi: Es tributa pel 20\% de 10.000€ = 48.000€
+\end{itemize}
+
+\newpage
+
+\section{Lectura de dades i
+preprocessament}\label{lectura-de-dades-i-preprocessament}
+
+A continuació, s'introdueix el conjunt de dades utilitzat en l'estudi i
+es descriu el procés seguit per a la seva obtenció i el preprocessament
+necessari. Aquest pas és fonamental per garantir la integritat de
+l'anàlisi descriptiu i la validesa dels models posteriors. L'objectiu
+inicial és explorar el comportament general dels números premiats
+mitjançant taules de síntesi i visualitzacions gràfiques.
+
+\subsection{Font d'obtenció i naturalesa de les
+dades}\label{font-dobtenciuxf3-i-naturalesa-de-les-dades}
+
+El conjunt de dades utilitzat en aquest estudi s'ha extret principalment
+dels arxius oficials publicats per la Sociedad Estatal de Loterías y
+Apuestas del Estado (SELAE), l'entitat responsable de la Loteria de
+Nadal. Aquests arxius, disponibles de manera sistemàtica des de l'any
+2000, contenen la totalitat dels números premiats en cada sorteig,
+incloent-hi la seva categoria i l'import corresponent.
+
+A la Figura següent es pot observar un exemple de la font original d'on
+s'han obtingut les dades, mostrant l'estructura típica del llistat
+oficial:
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.5\textwidth]{loteria.png}
+  \caption{Resultats Sorteig Loteria de Nadal (2023)}
+\end{figure}
+
+A partir d'aquesta font, s'ha realitzat una extracció de la informació
+rellevant (any, número, premi, lletra), que posteriorment s'ha
+emmagatzemat en un fitxer amb format \texttt{.txt} per al seu
+processament. La lectura i el tractament de les dades s'ha implementat
+mitjançant un script d'R extern, dissenyat per automatitzar la
+unificació dels 26 anys analitzats. També s'ha generat un fitxer en
+format \texttt{.xlsx} per facilitar la reproductibilitat de l'estudi per
+part de tercers.
+
+\subsection{Estructura del Dataset}\label{estructura-del-dataset}
+
+Per tal de familiaritzar-nos amb la matriu de dades, es presenten a
+continuació dues taules. La primera mostra un extracte real dels números
+premiats corresponents al sorteig més recent (2025), mentre que la
+segona ofereix una visió agregada de tot el període d'estudi. Cada
+registre inclou el número premiat, la seva categoria (identificada per
+la ``lletra''), l'import del premi en euros i l'any del sorteig.
+
+\begin{table}[H]
+\centering
+\caption{\label{tab:unnamed-chunk-2}Primers registres del sorteig 2025}
+\centering
+\fontsize{9}{11}\selectfont
+\begin{tabular}[t]{llrlr}
+\toprule
+numero & lletra & premi & categoria & any\\
+\midrule
+00032 & t & 1000 & Decena & 2025\\
+00048 & t & 1000 & Decena & 2025\\
+00082 & NA & 1000 & Decena & 2025\\
+00093 & NA & 1000 & Decena & 2025\\
+00112 & NA & 1000 & Centena & 2025\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{\label{tab:unnamed-chunk-2}Resum global del conjunt de dades (2000-2025)}
+\centering
+\fontsize{9}{11}\selectfont
+\begin{tabular}[t]{ll}
+\toprule
+Variable & Valor\\
+\midrule
+Anys analitzats & 26\\
+Total de números premiats & 127664\\
+Premi mínim (€) & 901.52\\
+Premi màxim (€) & 4000000\\
+Categories (Lletra) & a: 156 | c: 11879 | t: 70118 | Bombo: 45511\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Podem observar com cada registre té l'import del premi, la seva
+categoria, la moneda (Euros o pessetes) i l'any del sorteig. En el
+període de 26 anys que analitzarem, hi han hagut 127.664 números
+premiats.
+
+També s'utilitza el conjunt de dades de l'històric dels premis de la
+Grossa des de l'inici del sorteig, l'any 1812, fins a l'actualitat.
+Aquestes dades han estat obtingudes a partir de fonts disponibles a
+internet, i podeu veure un extracte de les dades a continuació:
+
+\begin{table}[H]
+\centering
+\caption{\label{tab:unnamed-chunk-3}Conjunt de dades de la Grossa (1812-2025)}
+\centering
+\fontsize{9}{11}\selectfont
+\begin{tabular}[t]{rlr}
+\toprule
+Any & Numero & Terminació\\
+\midrule
+1812 & 03604 & 4\\
+1813 & 08553 & 3\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Estadístiques descriptives i anàlisi de
+l'atzar}\label{estaduxedstiques-descriptives-i-anuxe0lisi-de-latzar}
+
+Un cop realitzada la lectura del conjunt de dades, procedim amb
+l'anàlisi descriptiu per proporcionar una visió global del comportament
+de les dades per identificar distribucions, així com detectar possibles
+patrons o irregularitats del sorteig.
+
+\subsection{Distribució històrica de l'última xifra
+(1812-2025)}\label{distribuciuxf3-histuxf2rica-de-luxfaltima-xifra-1812-2025}
+
+Tot i que l'anàlisi principal d'aquest estudi se centra en el període
+2000-2025, s'ha considerat rellevant examinar la distribució històrica
+de l'última xifra del número guanyador del primer premi des de l'inici
+del sorteig, l'any 1812.
+
+Aquest estudi és interessant, ja que si un dècim coincideix en l'última
+xifra amb la del primer premi, el jugador obté el reintegrament,
+recuperant així els diners invertits. Per aquest motiu, l'estudi de les
+terminacions pot aportar informació addicional sobre el comportament
+global del sorteig al llarg del temps.
+
+L'anàlisi permetrà avaluar si hi ha algun patró existent en la
+freqüència d'aparicions de les xifres.
+
+\begin{center}\includegraphics{Treball_final_files/figure-latex/unnamed-chunk-4-1} \end{center}
+
+A partir de les dades analitzades, s'observa que les terminacions 5, 4,
+6 i 8 són les que han aparegut amb més freqüència com a última xifra del
+número guanyador, amb 31, 27, 26 i 25 aparicions, respectivament. En
+canvi, les terminacions 1 i 9 presenten les freqüències més baixes.
+
+Tot i aquestes diferències, el comportament de les dades és compatible
+amb la variabilitat d'un procés aleatori. Per tant, en principi, no
+podrem establir cap predicció fiable sobre futures terminacions.
+
+\subsection{Verificació d'homogeneïtat en el període modern
+(2000-2025)}\label{verificaciuxf3-dhomogeneuxeftat-en-el-peruxedode-modern-2000-2025}
+
+Més enllà del primer premi, hem analitzat els \textbf{127.664 registres}
+de números premiats en els darrers 26 anys. En explorar aquest volum de
+dades, hem detectat una distinció crucial per a la validesa de l'estudi:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Premis de bombo (Atzar físic):} Són els números que surten
+  físicament del bombo (Pedrea i premis majors). Al nostre dataset, són
+  aquells que no tenen cap lletra associada, básicament són aquells que
+  representen l'extracció directe i aleatòria.
+\item
+  \textbf{Premis derivats:} Són aquells premis que no surten d'una bola
+  pròpia, sinó que es concedeixen per la relació numèrica amb els
+  guanyadors principals, com ja ho haviem nombrat abans.
+\end{enumerate}
+
+A continuació, comparem la distribució de les terminacions de les boles
+extretes per veure si l'atzar és realment homogeni:
+
+\begin{center}\includegraphics{Treball_final_files/figure-latex/unnamed-chunk-5-1} \end{center}
+
+Aquest gràfic ens revela un convergència clara cap a la uniformitat
+estadística que valida la integritat del sortieig en el període modern.
+A diferència de la mostra històrica reduïda de la Grossa, l'estudi de
+les més de quaranta-cinc mil boles extretes del bombo confirma que les
+terminacions segueixen la Llei de Grans Nombre i es distribueixen de
+manera equilibrada al voltant de la mitjana teòrica.
+
+Aquest equilibri actua com a una evidència empírica de l'equitat
+mecànica del sistema, demostrant que el disseny físic de les boles i el
+seu gravat làser garanteixen que cap número tingui una probabilitat
+d'extracció superior a la resta.
+
+Finalment, els resultats refirmen el rigor metodològic d'haver separat
+els premis d'extracció directa dels derivats per càlcul, ja que només
+així s'ha pogut verificar que el bombo funciona com un generador d'atzar
+pur sense biaixos detectables.
+
+\newpage
+
+\section{Modelització i validació
+estadística}\label{modelitzaciuxf3-i-validaciuxf3-estaduxedstica}
+
+En aquesta secció, apliquem tècniques d'estadística avançada per
+sotmetre a prova l'aleatorietat del sorteig. L'objectiu és determinar si
+existeix alguna variable (com el rang numèric, la paritat o la suma de
+dígits) que permeti obtenir un avantatge predictiu, o si, per contra,
+ens trobem davant d'un sistema d'atzar pur.
+
+\subsection{L'impacte de l'evolució del
+bombo}\label{limpacte-de-levoluciuxf3-del-bombo}
+
+Un dels canvis estructurals més rellevants a estudiar al llarg del
+període estudiat és l'ammpliació progressiva del nombre total de boles
+al bombo:
+
+\begin{itemize}
+\item
+  P1 (fins al 2004): 66.000 números.
+\item
+  P2 (2005-2010): 85.000 números.
+\item
+  P3 (des de 2011): 100.000 números.
+\end{itemize}
+
+Aquest increment té un efecte directe en l'espai mostral del sorteig.
+L'anàlisi següent avalua si el bombo s'ha adaptat correctament a
+aquestes ampliacions, desplaçant proporcionalment els premis cap a les
+noves franges numèriques.
+
+Per avaluar aquest aspecte, s'han agrupat els números premiats en tres
+rangs (baix, mitjà i alt), i s'ha avaluat el percentatge de premis
+assignats a cada franja dins de cada període.
+
+\begin{center}\includegraphics{Treball_final_files/figure-latex/unnamed-chunk-6-1} \end{center}
+
+Al gràfic podem observar que, durant el segon període (2005-2010) amb
+l'ampliació del bombo fins als 85.000 números, els premis es
+distribueixen gairebé com s'esperava. La distribució teòrica dels premis
+és del 77.6\% per a la franja baixa i del 22.4\% per a la franja
+mitjana. Els percentatges observats s'ajusten bé als valors teòrics, amb
+una lleugera diferència que es pot explicar amb la variabilitat inherent
+d'un procés aleatori.
+
+Durant el període P3, la distribució esperada dels premis segons la mida
+de cada franja és del 66\% per a la franja baixa, del 19\% per a la
+franja mitjana i del 15\% per a la franja alta. Els percentatges
+observats es tornen a ajustar molt bé als valors teòrics, sense tenir
+evidència de biaix, la qual cosa reforça la hipòtesi que els premis es
+distribueixen de manera aleatòria.
+
+\subsection{Anàlisi de variables ocultes: Mite
+vs.~Realitat}\label{anuxe0lisi-de-variables-ocultes-mite-vs.-realitat}
+
+Existeix la creença popular que certs números (``bonics'', parells, o
+amb certes sumes) tenen més probabilitat de ser premiats. Per contrastar
+aquesta hipòtesi amb rigor matemàtic, hem construït un Model Lineal Mixt
+(LMM).
+
+\begin{itemize}
+\item
+  Variable Resposta: Logaritme base 10 del premi (\emph{log10(premi)}),
+  per normalitzar la distribució.
+\item
+  Predictors Fixos: Paritat del número (Parell/Senar) i Suma dels cinc
+  dígits del número (ex: 12345 = 15).
+\item
+  Efecte Aleatori: Any del sorteig (\(1 | any\)), per controlar la
+  variabilitat econòmica i estructural de cada edició.
+\end{itemize}
+
+El model s'ha ajustat amb lmer() i mostra l'efecte de la paritat i de la
+suma dels dígits sobre el logaritme del premi.
+
+\begin{table}[H]
+\centering
+\caption{\label{tab:unnamed-chunk-7}Coeficients fixos del LMM: Paritat i Suma de dígits}
+\centering
+\fontsize{9}{11}\selectfont
+\begin{tabular}[t]{lrrrrr}
+\toprule
+Predictor & Estimate & Std\_Error & df & t\_value & Pr(>|t|)\\
+\midrule
+(Intercept) & 3.0164910 & 0.0042603 & 127.9804 & 708.0411598 & 0.0000000\\
+es\_parellParell & 0.0005651 & 0.0017298 & 45487.4368 & 0.3266915 & 0.7439027\\
+suma\_digits & -0.0002532 & 0.0001376 & 45456.1750 & -1.8394395 & 0.0658571\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Aquesta taula mostra que els coeficients de ser parell i la suma dels
+dígits són molt propers a zero. Podem observar que p-valors són majors
+que el nivell de significació del 0.05, i per tant, no són
+significatius. Indicant que cap de les variables tenen un impacte
+rellevant sobre el premi.
+
+Per a complementar aquesta anàlisi, hem representat gràficament les
+variables:
+
+\begin{center}\includegraphics{Treball_final_files/figure-latex/unnamed-chunk-8-1} \end{center}
+
+Aquest gràfic ens permet observar si la distribució dels premis varien
+segons si el número és parell o senar. Tant i com hem vist, les
+distribucions són molt similars i les medianes gairebé coincideixen, per
+tant, no hi ha evidència que la paritat afecti el premi.
+
+\begin{center}\includegraphics{Treball_final_files/figure-latex/unnamed-chunk-9-1} \end{center}
+
+En aquest segon gràfic observem si existeix alguna relació lineal entre
+la suma dels dígits del número i el valor del premi. La línia vermella
+representa la tendència estimada pel model.
+
+\newpage
+
+Com es pot apreciar, la recta de regressió és pràcticament horizontal i
+la majoria dels punts es distribueixen de manera uniforme al voltant
+d'aquesta línia. Això indica qeu la suma dels dígits no exerceix cap
+influència significativa sobre el logaritme del premi. En ambdós casos,
+els gràfics serveixen per visualitzar que les creences populars són
+només mites, i reforcen les conclusions del LMM.
+
+\subsection{Comparativa de capacitat
+predictiva}\label{comparativa-de-capacitat-predictiva}
+
+Per explorar fins a quin punt és possible ``guanyar a la banca'', hem
+comparat tres enfocaments per predir la quantia del premi:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Model Mixt (LMM): Estadístic clàssic, que incorpora efectes aleatoris
+  per any del sorteig
+\item
+  GLM Gamma: Model lineal generalitzat, ideal per a valors monetaris
+  positius.
+\item
+  Random Forest: Algorisme de \emph{Machine Learning} capaç de detectar
+  patrons complexos i no lineals.
+\end{enumerate}
+
+\emph{Nota: Per raons computacionals, hem pres una submostra de 5000
+observacions per al Random Forest.}
+
+Com a mesura de rendiment dels models utilitzarm l'RMSE (Root Mean
+Squared Error), que reflecteix l'error mitjà entre els valors reals i
+els predits:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Model} & \textbf{RMSE (Error promig en €)} &
+\textbf{Interpretació} \\
+\textbf{Model Mixt} & 22844.01 & Incapaç de reduir l'error usant
+l'any. \\
+\textbf{GLM Gamma} & 22848.32 & Captura la mitjana però no la variància
+extrema. \\
+\textbf{Random Forest} & 16033.3 & Malgrat la seva complexitat, no troba
+patrons. \\
+\end{longtable}
+
+L'anàlisi de l'Error Quadràtic Mitjà (RMSE) dels models generats mostra
+la incapacitat de predir el resultat de la loteria. Tots tres models
+tenen un RMSE elevat, indicant que la predicció exacta del premi és molt
+difícil.
+
+Això ens torna a confirmar que els premis de la Loteria de Nadal són
+aleatòris i que cap patró numèric observable permet predir amb precisió
+la quantia guanyadora.
+
+\newpage
+
+\section{Validació de l'aleatorietat (Test
+d'Uniformitat)}\label{validaciuxf3-de-laleatorietat-test-duniformitat}
+
+Per assegurar que el bombo no té ``memòria'' ni biaixos, apliquem un
+test uniforme per comprovar que cada xifra té la mateixa probabilitat
+d'aparèixer en els números guanyadors, apliquem un test de Chi-quadrat.
+
+\begin{table}[H]
+\centering
+\caption{\label{tab:unnamed-chunk-12}Resultat del test Chi-quadrat per uniformitat}
+\centering
+\fontsize{10}{12}\selectfont
+\begin{tabular}[t]{lrrr}
+\toprule
+  & Estadístic & Grau.de.llibertat & p.valor\\
+\midrule
+X-squared & 6.2585 & 9 & 0.7138\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Estem testejant si els números segueixen una distribució uniforme, és a
+dir, cada dígit de 0 a 9 apareix amb la mateixa probabilitat. Podem
+veure que el p-valor és molt gran (\textgreater0.05), per tant, no tenim
+suficient evidències estadístiques per rebutjar la hipòtesi nul·la i
+acceptem que el sorteig és homogeni.
+
+\newpage
+
+\section{Conclusions}\label{conclusions}
+
+Les conclusions d'aquest treball confirmen de manera rotunda que el
+Sorteig Extraordinari de Nadal és un esdeveniment basat en l'atzar pur,
+validant així la postura més escèptica i científica expressada pel germà
+en el debat familiar. L'anàlisi de la integritat física del procés
+demostra que l'ús de boles de fusta de boix amb un pes unificat i gravat
+làser garanteix una equitat absoluta, eliminant qualsevol biaix que
+pogués derivar de la pintura o el pes dels números. Aquesta aleatorietat
+es veu reforçada pels tests estadístics d'uniformitat realitzats sobre
+el període modern, on s'ha obtingut un p-valor de 0,7138. Aquesta xifra
+obliga a acceptar l'homogeneïtat del sorteig i confirma que, en la
+pràctica, cada dígit té exactament la mateixa probabilitat de ser extret
+del bombo.
+
+Pel que fa als mites populars sobre números ``bonics'' o determinades
+propietats numèriques, els models lineals mixtos han demostrat que
+variables com la paritat del número o la suma dels seus cinc dígits no
+tenen cap impacte significatiu en la quantia del premi obtingut. Les
+evidències gràfiques han permès visualitzar que les distribucions de
+premis i les seves medianes són pràcticament idèntiques independentment
+de si el número és parell o senar , el que desmunta científicament
+qualsevol estratègia de compra basada en aquests criteris tradicionals.
+Així mateix, la comparativa de models de capacitat predictiva,
+incloent-hi algorismes de \emph{Machine Learning} com el \emph{Random
+Forest}, ha posat de manifest la impossibilitat de predir resultats
+futurs mitjançant l'estudi de dades històriques, ja que els elevats
+errors de predicció (RMSE) confirmen que el bombo no té ``memòria''.
+
+D'aquesta manera, la ciència dóna la raó al germà: la probabilitat de
+guanyar la Grossa amb un sol dècim es manté immutable en un 0,001\% ,
+confirmant que la loteria actua matemàticament com un ``impost a
+l'esperança''. No obstant això, per mantenir viva la il·lusió de la mare
+i maximitzar les opcions de recuperar la inversió, l'estratègia més
+racional és la diversificació. Comprar números amb terminacions
+diferents augmenta les possibilitats d'obtenir el reintegrament, que té
+una probabilitat del 10\%. Si es vol seguir la tradició històrica,
+xifres com el 5, el 4 o el 6 han estat les més freqüents des de 1812 ,
+però cal recordar que el sorteig és, en realitat, una ``pluja fina'' de
+premis petits on la Pedrea n'és la gran protagonista amb un 1,794\% de
+probabilitat. En definitiva, el millor premi garantit per a la família
+és gaudir del folklore i la tradició de compartir el dècim, acceptant
+que l'atzar n'és l'únic i absolut senyor.
+
+\newpage
+
+\section{Annexos}\label{annexos}
+
+A continuació, introduirem el directori de Git-Hub on podràs trobar tot
+el codi d'R utilitzat:
+
+\url{https://github.com/andreaacuvilla/Loteria}
+
+\newpage
+
+\section{Referències}\label{referuxe8ncies}
+
+Badiella, L. (2005). La física aplicada en la Loteria de Nadal: equitat
+i mecanismes de sort. Barcelona: Edicions UPC.
+
+La Lotera. (2025). Histórico de números premiados con el Gordo de
+Navidad.
+\url{https://lalotera.es/historico-numeros-premiados-gordo-navidad/}
+
+\end{document}
